@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="127dp"
+        android:layout_height="103dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/asaf" />
+
+    <TextView
+        android:id="@+id/reg_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="הרשמה"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/input_bg"
+        android:drawableRight="@drawable/ic_person"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="שם מלא"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg_title" />
+
+    <EditText
+        android:id="@+id/input_mail"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableRight="@drawable/ic_email"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint='דוא"ל'
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/input_name"
+        app:layout_constraintStart_toStartOf="@+id/input_name"
+        app:layout_constraintTop_toBottomOf="@+id/input_name" />
+
+    <EditText
+        android:id="@+id/input_phone"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableRight="@drawable/ic_phone"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="טלפון נייד"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/input_mail"
+        app:layout_constraintStart_toStartOf="@+id/input_mail"
+        app:layout_constraintTop_toBottomOf="@+id/input_mail" />
+
+    <EditText
+        android:id="@+id/input_password"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableRight="@drawable/ic_security"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="סיסמא"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/input_phone"
+        app:layout_constraintStart_toStartOf="@+id/input_phone"
+        app:layout_constraintTop_toBottomOf="@+id/input_phone" />
+
+    <EditText
+        android:id="@+id/input_cpassword"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableRight="@drawable/ic_check"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="אימות סיסמא"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/input_password"
+        app:layout_constraintStart_toStartOf="@+id/input_password"
+        app:layout_constraintTop_toBottomOf="@+id/input_password" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_bg"
+        android:text="תרשמו אותי!"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_pic"
+        app:layout_constraintStart_toStartOf="@+id/btn_pic"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pic" />
+
+    <TextView
+        android:id="@+id/already_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="כבר יש לך משתמש? לחץ כאן!"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <Button
+        android:id="@+id/btn_pic"
+        android:layout_width="278dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_pic"
+        android:drawableTop="@drawable/ic_camera"
+        android:text="צילום תעודת סטודנט / אישור לימודים"
+        app:layout_constraintEnd_toEndOf="@+id/input_cpassword"
+        app:layout_constraintStart_toStartOf="@+id/input_cpassword"
+        app:layout_constraintTop_toBottomOf="@+id/input_cpassword" />
+</androidx.constraintlayout.widget.ConstraintLayout>
