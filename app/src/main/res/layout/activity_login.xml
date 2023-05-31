@@ -5,8 +5,9 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:onClick="registerOnClick"
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -79,6 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:clickable="true"
         android:text="שכחתי את הסיסמא אח שלי היקר"
         android:textColor="@color/black"
         android:textSize="16sp"
