@@ -53,7 +53,7 @@
         android:id="@+id/btn_select_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_pic"
         android:drawableEnd="@drawable/ic_calendar"
@@ -82,9 +82,9 @@
 
     <Button
         android:id="@+id/btn_select_time"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/btn_pic"
         android:drawableEnd="@drawable/ic_watch"
         android:drawablePadding="8dp"
@@ -111,9 +111,9 @@
 
     <Button
         android:id="@+id/btn_select_from"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/btn_pic"
         android:drawableEnd="@drawable/ic_location"
         android:drawablePadding="8dp"
@@ -140,9 +140,9 @@
 
     <Button
         android:id="@+id/btn_select_to"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/btn_pic"
         android:drawableEnd="@drawable/ic_location"
         android:drawablePadding="8dp"
@@ -167,6 +167,42 @@
         app:layout_constraintEnd_toEndOf="@+id/to_title"
         app:layout_constraintTop_toBottomOf="@+id/to_title" />
 
+    <LinearLayout
+        android:id="@+id/passenger_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/btn_select_to"
+        app:layout_constraintStart_toStartOf="@+id/btn_select_to"
+        app:layout_constraintTop_toBottomOf="@+id/btn_select_to">
+
+        <Button
+            android:id="@+id/minus_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_pic"
+            android:onClick="decreasePassengerCount"
+            android:text="-"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/passenger_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/plus_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_pic"
+            android:onClick="increasePassengerCount"
+            android:text="+"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 
 
@@ -182,4 +218,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number_of_seats_title" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
