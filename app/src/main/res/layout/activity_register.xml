@@ -131,12 +131,12 @@
         app:layout_constraintStart_toStartOf="@+id/input_password"
         app:layout_constraintTop_toBottomOf="@+id/input_password" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/btn_bg"
+        android:background="@drawable/btn_send"
         android:text="תרשמו אותי!"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
@@ -156,12 +156,12 @@
         app:layout_constraintStart_toStartOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_pic"
         android:layout_width="278dp"
         android:layout_height="115dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_pic"
+        android:background="@drawable/btn_send"
         android:drawableTop="@drawable/ic_camera"
         android:text="צילום תעודת סטודנט / אישור לימודים"
         android:textSize="16sp"

@@ -49,13 +49,13 @@
         app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_select_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_pic"
+        android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_calendar"
         android:drawablePadding="8dp"
         android:paddingStart="12dp"
@@ -80,12 +80,12 @@
         app:layout_constraintTop_toBottomOf="@+id/when_title" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_select_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:background="@drawable/btn_pic"
+        android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_watch"
         android:drawablePadding="8dp"
         android:paddingStart="12dp"
@@ -109,12 +109,12 @@
         app:layout_constraintEnd_toEndOf="@+id/time_title"
         app:layout_constraintTop_toBottomOf="@+id/time_title" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_select_from"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:background="@drawable/btn_pic"
+        android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_location"
         android:drawablePadding="8dp"
         android:paddingStart="12dp"
@@ -138,12 +138,12 @@
         app:layout_constraintEnd_toEndOf="@+id/from_title"
         app:layout_constraintTop_toBottomOf="@+id/from_title" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_select_to"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:background="@drawable/btn_pic"
+        android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_location"
         android:drawablePadding="8dp"
         android:paddingStart="12dp"
@@ -156,12 +156,12 @@
         app:layout_constraintStart_toStartOf="@+id/btn_select_from"
         app:layout_constraintTop_toBottomOf="@+id/btn_select_from" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_drive"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
-        android:background="@drawable/btn_bg"
+        android:background="@drawable/btn_send"
         android:text="חפש נסיעה"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
