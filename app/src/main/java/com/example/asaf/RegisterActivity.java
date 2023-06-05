@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firebaseModel = new FireBaseModel();
+        firebaseModel = new FireBaseModel(RegisterActivity.this);
 
         nameEditText = findViewById(R.id.input_name);
         emailEditText = findViewById(R.id.input_mail);
@@ -79,6 +78,10 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseModel.getCurrentUser();
                             Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                             Log.d("RegistrationActivity", "Registration successful for user: " + user.getEmail());
+
+                            // Push user info to the Realtime Database
+                            String userId = user.getUid();
+                            firebaseModel.saveUserInfo(userId, name, email, phone);
                         } else {
                             // Registration failed
                             Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
