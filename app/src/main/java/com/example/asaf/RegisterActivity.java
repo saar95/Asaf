@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         phoneEditText = findViewById(R.id.input_phone);
         passwordEditText = findViewById(R.id.input_password);
         cPasswordEditText = findViewById(R.id.input_cpassword);
-        registerButton = findViewById(R.id.btn_login);
+        registerButton = findViewById(R.id.btn_register);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,31 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString();
                 String cPassword = cPasswordEditText.getText().toString();
 
-                if (name.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Name is required", Toast.LENGTH_SHORT).show();
+                if(!validation(name,email,phone,password,cPassword))
                     return;
-                }
-
-                if (phone.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Phone is required", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Perform field validations
-                if (!isValidEmail(email)) {
-                    Toast.makeText(RegisterActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (!isValidPassword(password)) {
-                    Toast.makeText(RegisterActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (!isValidCPassword(password,cPassword)) {
-                    Toast.makeText(RegisterActivity.this, "הסיסמאות אינן דומות", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 // Call the signUp method in the FirebaseModel
                 firebaseModel.signUp(email, password, new OnCompleteListener<AuthResult>() {
@@ -91,6 +68,35 @@ public class RegisterActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private boolean validation(String name, String email, String phone, String password, String cPassword) {
+        if (name.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Name is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (phone.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Phone is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Perform field validations
+        if (!isValidEmail(email)) {
+            Toast.makeText(RegisterActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!isValidPassword(password)) {
+            Toast.makeText(RegisterActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!isValidCPassword(password,cPassword)) {
+            Toast.makeText(RegisterActivity.this, "הסיסמאות אינן דומות", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private boolean isValidCPassword(String password, String cPassword) {
