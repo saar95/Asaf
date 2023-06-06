@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".RegisterActivity">
     >
 
 
@@ -137,6 +137,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/btn_send"
+        android:onClick="signUpOnClick"
         android:text="תרשמו אותי!"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
@@ -149,12 +150,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="moveLoginOnClick"
         android:text="כבר יש לך משתמש? לחץ כאן!"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_login"
-        app:layout_constraintStart_toStartOf="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_register"
+        app:layout_constraintStart_toStartOf="@+id/btn_register"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_pic"

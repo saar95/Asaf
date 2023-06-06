@@ -17,7 +17,6 @@
     public class LoginActivity extends AppCompatActivity {
 
         private EditText emailEditText, passwordEditText;
-        private Button loginButton;
         private FireBaseModel firebaseModel;
 
         @Override
@@ -29,11 +28,11 @@
 
             emailEditText = findViewById(R.id.input_mail);
             passwordEditText = findViewById(R.id.input_password);
-            loginButton = findViewById(R.id.btn_login);
 
-            loginButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        }
+
+
+                public void loginOnClick(View view) {
                     String email = emailEditText.getText().toString().trim();
                     String password = passwordEditText.getText().toString().trim();
 
@@ -51,17 +50,18 @@
                                 // Login success
                                 FirebaseUser user = firebaseModel.getCurrentUser();
                                 Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                                 // You can navigate to another activity here
                             } else {
                                 // Login failed
-                                Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Login failed, Please check your data and try again.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 }
-            });
-        }
-        public void registerOnClick(View view) {
+
+
+        public void moveRegisterOnClick(View view) {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         }
     }
