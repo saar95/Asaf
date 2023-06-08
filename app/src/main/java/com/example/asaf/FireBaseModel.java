@@ -3,13 +3,18 @@ package com.example.asaf;
 import android.content.Context;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class FireBaseModel {
     private FirebaseAuth mAuth;
@@ -58,6 +63,30 @@ public class FireBaseModel {
                 });
     }
 
+    public void saveDrive(String name,String date, String time,String from,String to,String amount){
+
+
+//                        if(songEditText.getText().toString().equals("")){
+//                            Toast.makeText(CreatorActivity.this, "Please fill the song link", Toast.LENGTH_LONG).show();
+//                        }
+//                        else {
+        myRef.child("Drive").child("name").setValue(name);
+        myRef.child("Drive").child("date").setValue(date);
+        myRef.child("Drive").child("time").setValue(time);
+        myRef.child("Drive").child("from").setValue(from);
+        myRef.child("Drive").child("to").setValue(to);
+        myRef.child("Drive").child("amount").setValue(amount);
+                            //Toast.makeText(CreatorActivity.this, "The song was uploaded successfully", Toast.LENGTH_LONG).show();
+//                        }
+
+                    }
+
+
+
+
+    public void loadDrive(){
+
+    }
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }

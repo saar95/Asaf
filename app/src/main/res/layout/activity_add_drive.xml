@@ -182,11 +182,11 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/btn_bg"
-            android:onClick="decreasePassengerCount"
+            android:onClick="minus"
             android:text="-"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/passenger_count_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/btn_bg"
-            android:onClick="increasePassengerCount"
+            android:onClick="plus"
             android:text="+"
             android:textSize="20sp" />
     </LinearLayout>
@@ -211,6 +211,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/btn_send"
+        android:onClick="addDrive"
         android:text="פרסם נסיעה"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
