@@ -55,11 +55,11 @@ public class RegisterActivity extends AppCompatActivity {
                     FirebaseUser user = firebaseModel.getCurrentUser();
                     Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                     Log.d("RegistrationActivity", "Registration successful for user: " + user.getEmail());
-                    startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
-
                     // Push user info to the Realtime Database
                     String userId = user.getUid();
                     firebaseModel.saveUserInfo(userId, name, email, phone);
+                    startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
+
                 } else {
                     // Registration failed
                     Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();

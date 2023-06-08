@@ -32,23 +32,26 @@ public class AddDriveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drive);
         firebaseModel = new FireBaseModel(AddDriveActivity.this);
-
         calendar = Calendar.getInstance();
-
         date = (Button) findViewById(R.id.btn_select_date);
         time = (Button) findViewById(R.id.btn_select_time);
         from = (Button) findViewById(R.id.btn_select_from);
         to = (Button) findViewById(R.id.btn_select_to);
-
         amount = findViewById(R.id.passenger_count_text);
 
     }
 
     public void addDrive(View view){
-        FirebaseUser user = firebaseModel.getCurrentUser();
-        String userId = user.getUid();
-        firebaseModel.saveDrive(userId,date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString());
-        startActivity(new Intent(AddDriveActivity.this,HomeActivity.class));
+        if(!validation(date,time,from,to,amount)){
+
+        }
+        else{
+            FirebaseUser user = firebaseModel.getCurrentUser();
+            String userId = user.getUid();
+            firebaseModel.saveDrive(userId,date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString());
+            startActivity(new Intent(AddDriveActivity.this,HomeActivity.class));
+        }
+
     }
 
     public void showDatePickerDialog(View view) {
@@ -98,5 +101,16 @@ public class AddDriveActivity extends AppCompatActivity {
 
 
         }
+    }
+    public boolean validation(Button date,Button  time,Button from,Button to,EditText amount){
+        if(date.getText().toString().equals("DD/MM/YYYY")){
+            Toast.makeText(AddDriveActivity.this, "Please fill the date", Toast.LENGTH_LONG).show();return false;}
+        if(from.getText().toString().isEmpty()){
+            Toast.makeText(AddDriveActivity.this, "Please fill from where is the drive", Toast.LENGTH_LONG).show();return false;}
+        if(to.getText().toString().equals("בחר מיקום")){
+            Toast.makeText(AddDriveActivity.this, "Please fill to where is the drive", Toast.LENGTH_LONG).show();return false;}
+        if(amount.getText().toString().equals("בחר מיקום")){
+            Toast.makeText(AddDriveActivity.this, "Please fill the amount", Toast.LENGTH_LONG).show();return false;}
+        return true;
     }
 }
