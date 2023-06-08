@@ -63,23 +63,29 @@ public class FireBaseModel {
                 });
     }
 
-    public void saveDrive(String name,String date, String time,String from,String to,String amount){
+    public void saveDrive(String userId,String date, String time,String from,String to,String amount){
 
 
-//                        if(songEditText.getText().toString().equals("")){
-//                            Toast.makeText(CreatorActivity.this, "Please fill the song link", Toast.LENGTH_LONG).show();
-//                        }
-//                        else {
-        myRef.child("Drive").child("name").setValue(name);
-        myRef.child("Drive").child("date").setValue(date);
-        myRef.child("Drive").child("time").setValue(time);
-        myRef.child("Drive").child("from").setValue(from);
-        myRef.child("Drive").child("to").setValue(to);
-        myRef.child("Drive").child("amount").setValue(amount);
-                            //Toast.makeText(CreatorActivity.this, "The song was uploaded successfully", Toast.LENGTH_LONG).show();
-//                        }
+        DatabaseReference usersRef = myRef.child("Drive").child(userId);
 
-                    }
+        usersRef.child("date").setValue(date);
+        usersRef.child("time").setValue(time);
+        usersRef.child("from").setValue(from);
+        usersRef.child("to").setValue(to);
+        usersRef.child("amount").setValue(amount)
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(Task<Void> task) {
+                if (task.isSuccessful()) {
+                    // User info saved successfully
+                    showToast("Drive saved successfully");
+                } else {
+                    // Failed to save user info
+                    showToast("Failed to save drive info");
+                }
+            }
+        });
+    }
 
 
 

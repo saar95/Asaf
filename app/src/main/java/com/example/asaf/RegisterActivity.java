@@ -35,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         cPasswordEditText = findViewById(R.id.input_cpassword);
 
     }
+
     public void signUpOnClick(View v) {
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString().trim();
