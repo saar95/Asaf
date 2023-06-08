@@ -52,58 +52,26 @@ public class AddDriveActivity extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View view) {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+        DateTimeUtils.showDatePickerDialog(this, calendar, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateSelectedDate();
+                DateTimeUtils.updateSelectedDate(date, calendar);
             }
-        };
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                dateSetListener,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-        );
-        datePickerDialog.show();
+        });
     }
 
     public void showTimePickerDialog(View view) {
-        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+        DateTimeUtils.showTimePickerDialog(this, calendar, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendar.set(Calendar.MINUTE, minute);
-                updateSelectedTime();
+                DateTimeUtils.updateSelectedTime(time, calendar);
             }
-        };
-
-        TimePickerDialog timePickerDialog = new TimePickerDialog(
-                this,
-                timeSetListener,
-                calendar.get(Calendar.HOUR_OF_DAY),
-                calendar.get(Calendar.MINUTE),
-                true
-        );
-        timePickerDialog.show();
-    }
-
-    private void updateSelectedDate() {
-        String dateFormat = "dd/MM/yyyy";
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.getDefault());
-        String selectedDate = sdf.format(calendar.getTime());
-        date.setText(selectedDate);
-    }
-
-    private void updateSelectedTime() {
-        String timeFormat = "HH:mm";
-        SimpleDateFormat sdf = new SimpleDateFormat(timeFormat, Locale.getDefault());
-        String selectedTime = sdf.format(calendar.getTime());
-        time.setText(selectedTime);
+        });
     }
 
     public void plus(View view){
