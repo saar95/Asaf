@@ -19,10 +19,11 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/asaf" />
 
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:text="בוקר טוב יבני זונות,"
         android:textColor="@color/colorBlack"
         android:textSize="34sp"
@@ -41,9 +42,9 @@
         android:text="איך נוסעים היום?"
         android:textColor="@color/colorBlack"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/text_welcome"
+        app:layout_constraintStart_toStartOf="@+id/text_welcome"
+        app:layout_constraintTop_toBottomOf="@+id/text_welcome" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add"

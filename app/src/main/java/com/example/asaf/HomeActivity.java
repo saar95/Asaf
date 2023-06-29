@@ -1,23 +1,64 @@
 package com.example.asaf;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity {
+    private EditText welcomeEditText;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        welcomeEditText = findViewById(R.id.text_welcome);
+        mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        getName();
     }
 
-    public void addDriveOnClick(View view){
-       startActivity(new Intent(HomeActivity.this,AddDriveActivity.class));
+
+    public void addDriveOnClick(View view) {
+        startActivity(new Intent(HomeActivity.this, AddDriveActivity.class));
     }
-    public void searchDriveOnClick(View view){
-        startActivity(new Intent(HomeActivity.this,SearchingDriveActivity.class));
+
+    public void searchDriveOnClick(View view) {
+        startActivity(new Intent(HomeActivity.this, SearchingDriveActivity.class));
     }
+
+    public String getName(){
+        myRef.child("users").child(mAuth.getCurrentUser().getUid()).child("name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    String name = String.valueOf(task.getResult().getValue());
+                    welcomeEditText.setText("בוקר טוב, "+name);
+                }
+            }
+        });
+        return "name";
+    }
+
 }
+
