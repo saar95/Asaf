@@ -35,12 +35,10 @@ public class CitiesList {
                             JSONArray results = jsonObject.getJSONArray("שם_ישוב");
                             for (int i = 0; i < results.length(); i++) {
                                 String cityName = results.getString(i);
-                                fireBaseModel.showToast(cityName);
                                 // Push the city name to Firebase Realtime Database
                                 fireBaseModel.saveCity(cityName);
                             }
                         } catch (JSONException e) {
-                            fireBaseModel.showToast("byy");
                             e.printStackTrace();
                         }
                     }
