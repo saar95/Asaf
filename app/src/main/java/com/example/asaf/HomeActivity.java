@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public String getName(){
-        myRef.child("users").child(mAuth.getCurrentUser().getUid()).child("name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        myRef.child("users").child(mAuth.getCurrentUser().getUid()).child("first_name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-        return "name";
+        return "first_name";
     }
 
 }

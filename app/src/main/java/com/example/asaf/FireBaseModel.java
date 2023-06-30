@@ -42,10 +42,11 @@ public class FireBaseModel {
         return mAuth.getCurrentUser();
     }
 
-    public void saveUserInfo(String userId, String name, String email, String phone) {
+    public void saveUserInfo(String userId, String firstName, String lastName, String email, String phone) {
         DatabaseReference usersRef = myRef.child("users").child(userId);
 
-        usersRef.child("name").setValue(name);
+        usersRef.child("first_name").setValue(firstName);
+        usersRef.child("last_name").setValue(lastName);
         usersRef.child("email").setValue(email);
         usersRef.child("dirvesCounter").setValue(0);
         usersRef.child("rank").setValue(0);

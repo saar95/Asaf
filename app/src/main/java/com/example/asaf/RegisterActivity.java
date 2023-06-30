@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText nameEditText, emailEditText, passwordEditText, cPasswordEditText, phoneEditText;
+    private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, cPasswordEditText, phoneEditText;
     private FireBaseModel firebaseModel;
 
 
@@ -28,7 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         firebaseModel = new FireBaseModel(RegisterActivity.this);
 
-        nameEditText = findViewById(R.id.input_name);
+        firstNameEditText = findViewById(R.id.input_first_name);
+        lastNameEditText = findViewById(R.id.input_last_name);
         emailEditText = findViewById(R.id.input_mail);
         phoneEditText = findViewById(R.id.input_phone);
         passwordEditText = findViewById(R.id.input_password);
@@ -37,13 +38,14 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void signUpOnClick(View v) {
-        String name = nameEditText.getText().toString();
+        String firstName = firstNameEditText.getText().toString();
+        String lastName = lastNameEditText.getText().toString();
         String email = emailEditText.getText().toString().trim();
         String phone = phoneEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String cPassword = cPasswordEditText.getText().toString();
 
-        if(!validation(name,email,phone,password,cPassword))
+        if(!validation(firstName,lastName,email,phone,password,cPassword))
             return;
 
         // Call the signUp method in the FirebaseModel
@@ -57,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d("RegistrationActivity", "Registration successful for user: " + user.getEmail());
                     // Push user info to the Realtime Database
                     String userId = user.getUid();
-                    firebaseModel.saveUserInfo(userId, name, email, phone);
+                    firebaseModel.saveUserInfo(userId, firstName, lastName, email, phone);
                     startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
 
                 } else {
@@ -76,9 +78,14 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    private boolean validation(String name, String email, String phone, String password, String cPassword) {
-        if (name.isEmpty()) {
-            Toast.makeText(RegisterActivity.this, "Name is required", Toast.LENGTH_SHORT).show();
+    private boolean validation(String firstName, String lastName, String email, String phone, String password, String cPassword) {
+        if (firstName.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "First mame is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (lastName.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Last name is required", Toast.LENGTH_SHORT).show();
             return false;
         }
 
