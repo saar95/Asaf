@@ -85,10 +85,11 @@
         android:id="@+id/btn_select_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_watch"
         android:drawablePadding="8dp"
+        android:onClick="showTimePickerDialog"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:text="00:00"
@@ -97,8 +98,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/btn_select_date"
         app:layout_constraintStart_toStartOf="@+id/btn_select_date"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_date"
-        android:onClick="showTimePickerDialog"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_select_date" />
 
     <TextView
         android:id="@+id/from_title"
@@ -115,7 +115,7 @@
         android:id="@+id/btn_select_from"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_location"
         android:drawablePadding="8dp"
@@ -144,7 +144,7 @@
         android:id="@+id/btn_select_to"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/btn_bg"
         android:drawableEnd="@drawable/ic_location"
         android:drawablePadding="8dp"
