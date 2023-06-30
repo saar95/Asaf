@@ -47,6 +47,8 @@ public class FireBaseModel {
 
         usersRef.child("name").setValue(name);
         usersRef.child("email").setValue(email);
+        usersRef.child("dirvesCounter").setValue(0);
+        usersRef.child("rank").setValue(0);
         usersRef.child("phone").setValue(phone)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -86,7 +88,25 @@ public class FireBaseModel {
         });
     }
 
+    public void saveCity(String cityName) {
+        DatabaseReference citiesRef = myRef.child("cities");
 
+        // Generate a unique key for the city
+        String cityKey = citiesRef.push().getKey();
+
+        // Save the city name under the generated key
+        citiesRef.child(cityKey).setValue(cityName)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            showToast("City saved successfully");
+                        } else {
+                            showToast("Failed to save city");
+                        }
+                    }
+                });
+    }
 
 
     public void loadDrive(){
