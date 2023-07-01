@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/btn_profile_pic"
+            android:title="Profile"
+            android:icon="@drawable/ic_menu"
+            />
+        <item
+            android:id="@+id/btn_home"
+            android:title="עמוד הבית"
+            android:icon="@drawable/ic_home"
+            android:gravity="right"
+            android:layout_gravity="right"
+            />
+        <item
+            android:id="@+id/btn_ranks"
+            android:title="דף דירוגים"
+            android:icon="@drawable/ic_star"
+            android:gravity="right"
+            android:layout_gravity="right"/>
+        <item
+            android:id="@+id/btn_payments"
+            android:title="דף תשלומים"
+            android:icon="@drawable/ic_credit_card"
+            android:gravity="right"
+            android:layout_gravity="right"/>
+        <item
+            android:id="@+id/btn_logout"
+            android:title="התנתק"
+            android:icon="@drawable/ic_logout"
+            android:gravity="right"
+            android:layout_gravity="right"/>
+    </group>
+
+</menu>
