@@ -11,7 +11,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -109,10 +108,23 @@ public class FireBaseModel {
                 });
     }
 
-
     public void loadDrive(){
 
     }
+
+    public FirebaseAuth getmAuth(){
+        return mAuth;
+    }
+
+    public FirebaseDatabase getDatabase(){
+        return database;
+    }
+
+    public DatabaseReference getRef(){
+        return myRef;
+    }
+
+
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }

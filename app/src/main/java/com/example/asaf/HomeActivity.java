@@ -18,9 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity {
     private EditText welcomeEditText;
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
+
+    FireBaseModel fireBaseModel;
 
 
 
@@ -29,9 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         welcomeEditText = findViewById(R.id.text_welcome);
-        mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference();
+        fireBaseModel = new FireBaseModel(this);
         getName();
     }
 
@@ -45,7 +42,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public String getName(){
-        myRef.child("users").child(mAuth.getCurrentUser().getUid()).child("first_name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        fireBaseModel.getRef().child("users")
+                .child(fireBaseModel.getmAuth().getCurrentUser().getUid())
+                .child("first_name").get()
+                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
