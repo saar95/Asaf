@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(HomeActivity.this, SearchingDriveActivity.class));
     }
 
-    public String getName(){
+    public void getName(){
         fireBaseModel.getRef().child("users")
                 .child(fireBaseModel.getmAuth().getCurrentUser().getUid())
                 .child("first_name").get()
@@ -57,7 +57,6 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-        return "first_name";
     }
 
 }

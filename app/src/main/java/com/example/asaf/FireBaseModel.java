@@ -124,10 +124,8 @@ public class FireBaseModel {
         return myRef;
     }
 
-
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
 
 }
