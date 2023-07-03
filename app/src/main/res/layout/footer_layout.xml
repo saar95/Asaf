@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="bottom">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:background="@drawable/border_black">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_button1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="ההצעות שלי"
+            android:paddingTop="8dp"
+            android:drawableTop="@drawable/ic_check"
+
+            android:textColor="#000000"
+            android:background="@android:color/transparent" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:background="@drawable/border_black">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_calendar"
+            android:paddingTop="8dp"
+            android:text="הנסיעות שלי"
+            android:textColor="#000000" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:background="@drawable/border_black">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_button3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_message"
+            android:paddingTop="8dp"
+            android:text="הצ'אטים שלי"
+            android:textColor="#000000" />
+
+    </FrameLayout>
+
+</LinearLayout>
