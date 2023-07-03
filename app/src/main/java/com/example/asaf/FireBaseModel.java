@@ -54,10 +54,8 @@ public class FireBaseModel {
                     @Override
                     public void onComplete(Task<Void> task) {
                         if (task.isSuccessful()) {
-                            // User info saved successfully
                             showToast("User info saved successfully");
                         } else {
-                            // Failed to save user info
                             showToast("Failed to save user info");
                         }
                     }
