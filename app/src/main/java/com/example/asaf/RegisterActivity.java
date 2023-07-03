@@ -44,12 +44,13 @@ public class RegisterActivity extends AppCompatActivity {
         String phone = phoneEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String cPassword = cPasswordEditText.getText().toString();
+        String fullName = firstName+" "+lastName;
 
         if(!validation(firstName,lastName,email,phone,password,cPassword))
             return;
 
         // Call the signUp method in the FirebaseModel
-        firebaseModel.signUp(email, password, new OnCompleteListener<AuthResult>() {
+        firebaseModel.signUp(email, password,fullName  ,new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(Task<AuthResult> task) {
                 if (task.isSuccessful()) {

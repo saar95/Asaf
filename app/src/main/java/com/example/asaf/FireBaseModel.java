@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,9 +28,25 @@ public class FireBaseModel {
         this.context = context.getApplicationContext();
     }
 
-    public void signUp(String email, String password, OnCompleteListener<AuthResult> onCompleteListener) {
+    public void signUp(String email, String password, String displayName, OnCompleteListener<AuthResult> onCompleteListener) {
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(onCompleteListener);
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(displayName)
+                                    .build();
+
+                            user.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(task1 -> onCompleteListener.onComplete(task));
+                        } else {
+                            onCompleteListener.onComplete(task);
+                        }
+                    } else {
+                        onCompleteListener.onComplete(task);
+                    }
+                });
     }
 
     public void signIn(String email, String password, OnCompleteListener<AuthResult> onCompleteListener) {
@@ -43,7 +60,6 @@ public class FireBaseModel {
 
     public void saveUserInfo(String userId, String firstName, String lastName, String email, String phone) {
         DatabaseReference usersRef = myRef.child("users").child(userId);
-
         usersRef.child("first_name").setValue(firstName);
         usersRef.child("last_name").setValue(lastName);
         usersRef.child("email").setValue(email);
@@ -54,36 +70,38 @@ public class FireBaseModel {
                     @Override
                     public void onComplete(Task<Void> task) {
                         if (task.isSuccessful()) {
-                            showToast("User info saved successfully");
+                            // User info saved successfully
+
                         } else {
-                            showToast("Failed to save user info");
+                            // Failed to save user info
+
                         }
                     }
                 });
     }
 
-    public void saveDrive(String userId,String date, String time,String from,String to,String amount){
+    public void saveDrive(String name,String userId,String date, String time,String from,String to,String amount){
 
 
         DatabaseReference usersRef = myRef.child("Drive").child(userId);
-
+        usersRef.child("name").setValue(name);
         usersRef.child("date").setValue(date);
         usersRef.child("time").setValue(time);
         usersRef.child("from").setValue(from);
         usersRef.child("to").setValue(to);
         usersRef.child("amount").setValue(amount)
-        .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(Task<Void> task) {
-                if (task.isSuccessful()) {
-                    // User info saved successfully
-                    showToast("Drive saved successfully");
-                } else {
-                    // Failed to save user info
-                    showToast("Failed to save drive info");
-                }
-            }
-        });
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // User info saved successfully
+                            showToast("Drive saved successfully");
+                        } else {
+                            // Failed to save user info
+                            showToast("Failed to save drive info");
+                        }
+                    }
+                });
     }
 
     public void saveCity(String cityName) {
@@ -124,6 +142,16 @@ public class FireBaseModel {
 
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public String getFullName(){
+        return getCurrentUser().getDisplayName();
+    }
+    public String getFirstName(){
+        return getCurrentUser().getDisplayName().split(" ")[0];
+    }
+    public String getLastName(){
+        return getCurrentUser().getDisplayName().split(" ")[1];
     }
 
 }

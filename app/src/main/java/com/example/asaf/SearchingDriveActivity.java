@@ -1,39 +1,36 @@
 package com.example.asaf;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class SearchingDriveActivity extends AppCompatActivity {
+    ArrayList<DriveModel> DriveList = DriveModel.getInstance().getDriveList();
+
     private FireBaseModel firebaseModel;
     private Calendar calendar;
-    private Button name, date,  time;
-    private TextInputLayout inputFrom,inputTo;
-    private AutoCompleteTextView from,to;
-    private ArrayList<String> citiesList;
-    private ArrayAdapter<String> adapter;
+    private Button name, date, time, from, to;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +43,8 @@ public class SearchingDriveActivity extends AppCompatActivity {
 
         date = (Button) findViewById(R.id.btn_select_date);
         time = (Button) findViewById(R.id.btn_select_time);
-        inputFrom = findViewById(R.id.input_from);
-        from =findViewById(R.id.search_city);
-
-        citiesList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(SearchingDriveActivity.this, android.R.layout.simple_spinner_item, citiesList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        from.setAdapter(adapter);
-        from.setThreshold(1);
-        showCitiesList();
+        from = (Button) findViewById(R.id.btn_select_from);
+        to = (Button) findViewById(R.id.btn_select_to);
     }
 
     public void showDatePickerDialog(View view) {
@@ -81,27 +70,35 @@ public class SearchingDriveActivity extends AppCompatActivity {
         });
     }
 
-
-
-    public void showCitiesList(){
-        firebaseModel.getRef().child("cities").addValueEventListener(new ValueEventListener() {
+    public void showDriveList(View view) {
+        DriveList.clear();
+        firebaseModel.getRef().child("Drive").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(citiesList.isEmpty()) {
-                    for (DataSnapshot citySnapshot : dataSnapshot.getChildren()) {
-                        String cityName = citySnapshot.child("name").getValue(String.class);
-                        citiesList.add(cityName);
-                    }
-                    adapter.notifyDataSetChanged();
+                for (DataSnapshot DriveSnapshot : dataSnapshot.getChildren()) {
+                    String driveName = DriveSnapshot.child("name").getValue(String.class);
+                    String amount = DriveSnapshot.child("amount").getValue(String.class);
+                    String date = DriveSnapshot.child("date").getValue(String.class);
+                    String time = DriveSnapshot.child("time").getValue(String.class);
+                    String from = DriveSnapshot.child("from").getValue(String.class);
+                    String to = DriveSnapshot.child("to").getValue(String.class);
+
+                    DriveList.add(new DriveModel(driveName, date, time, from, to, amount));
                 }
 
+                startActivity(new Intent(SearchingDriveActivity.this, DriveListActivity.class));
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle the error here if the data retrieval is unsuccessful
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
 
 }
+
+
+
+
+

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Asaf"
         tools:targetApi="31">
         <activity
+            android:name=".DriveListActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchingDriveActivity"
             android:exported="false" />
         <activity

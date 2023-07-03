@@ -25,13 +25,14 @@
         android:layout_height="wrap_content" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@null"
         android:text="בוקר טוב,"
+        android:clickable="false"
         android:textColor="@color/colorBlack"
         android:textSize="34sp"
         android:textStyle="bold"

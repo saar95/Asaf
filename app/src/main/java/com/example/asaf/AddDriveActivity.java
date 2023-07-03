@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class AddDriveActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class AddDriveActivity extends AppCompatActivity {
     private Button name, date,  time, from, to;
 
     private Calendar calendar;
+    ArrayList<DriveModel> DriveList = DriveModel.getInstance().getDriveList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,8 @@ public class AddDriveActivity extends AppCompatActivity {
         else{
             FirebaseUser user = firebaseModel.getCurrentUser();
             String userId = user.getUid();
-            firebaseModel.saveDrive(userId,date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString());
+            firebaseModel.saveDrive(firebaseModel.getFullName(),userId,date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString());
+            //DriveList.add(new DriveModel(firebaseModel.getFullName(),date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString()));
             startActivity(new Intent(AddDriveActivity.this,HomeActivity.class));
         }
 
@@ -107,10 +110,10 @@ public class AddDriveActivity extends AppCompatActivity {
             Toast.makeText(AddDriveActivity.this, "Please fill the date", Toast.LENGTH_LONG).show();return false;}
         if(from.getText().toString().isEmpty()){
             Toast.makeText(AddDriveActivity.this, "Please fill from where is the drive", Toast.LENGTH_LONG).show();return false;}
-        if(to.getText().toString().equals("בחר מיקום")){
-            Toast.makeText(AddDriveActivity.this, "Please fill to where is the drive", Toast.LENGTH_LONG).show();return false;}
-        if(amount.getText().toString().equals("בחר מיקום")){
-            Toast.makeText(AddDriveActivity.this, "Please fill the amount", Toast.LENGTH_LONG).show();return false;}
+//        if(to.getText().toString().equals("בחר מיקום")){
+//            Toast.makeText(AddDriveActivity.this, "Please fill to where is the drive", Toast.LENGTH_LONG).show();return false;}
+//        if(amount.getText().toString().equals("בחר מיקום")){
+//            Toast.makeText(AddDriveActivity.this, "Please fill the amount", Toast.LENGTH_LONG).show();return false;}
         return true;
     }
 }
