@@ -124,10 +124,6 @@ public class FireBaseModel {
                 });
     }
 
-    public void loadDrive(){
-
-    }
-
     public FirebaseAuth getmAuth(){
         return mAuth;
     }
