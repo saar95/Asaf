@@ -20,7 +20,7 @@ public class DriveListActivity extends AppCompatActivity implements RecycleViewI
 
 
     private Adapter adapter;
-    //setUpMovieModel();
+
 
 
 
@@ -76,18 +76,6 @@ public class DriveListActivity extends AppCompatActivity implements RecycleViewI
 //            }
 //        }
 //        adapter.filterList(filteredMovieModels);
-//    }
-
-//    private void setUpMovieModel(){
-//        String [] movieNames = getResources().getStringArray(R.array.movie_name);
-//        String [] movieGenres = getResources().getStringArray(R.array.movie_genre);
-//        String [] movieYears = getResources().getStringArray(R.array.release_year);
-//        String [] movieDescription = getResources().getStringArray(R.array.movie_description);
-//
-//        for (int i = 0; i < movieNames.length; i++) {
-//            DriveList.add(new DriveModel(movieNames[i],movieGenres[i],movieYears[i],movieImages[i],movieDescription[i]));
-//        }
-//
 //    }
 
 }
