@@ -3,30 +3,35 @@ package com.example.asaf;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class SearchingDriveActivity extends AppCompatActivity {
-    ArrayList<DriveModel> DriveList = DriveModel.getInstance().getDriveList();
+    private ArrayList<DriveModel> DriveList = DriveModel.getInstance().getDriveList();
+    private ArrayList citiesList = new ArrayList<>();
+    private AlertDialog dialog;
 
     private FireBaseModel firebaseModel;
     private Calendar calendar;
@@ -41,10 +46,18 @@ public class SearchingDriveActivity extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
+
         date = (Button) findViewById(R.id.btn_select_date);
         time = (Button) findViewById(R.id.btn_select_time);
         from = (Button) findViewById(R.id.btn_select_from);
         to = (Button) findViewById(R.id.btn_select_to);
+
+        if(citiesList.isEmpty()) {
+            getCityList();
+        }
+
+
+
     }
 
     public void showDatePickerDialog(View view) {
@@ -92,6 +105,92 @@ public class SearchingDriveActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+
+    public void showCityList(View v) {
+        String buttonId = getResources().getResourceEntryName(v.getId());
+        // Create an AlertDialog.Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(SearchingDriveActivity.this);
+        builder.setTitle("בחר מיקום");
+
+        // Create a LinearLayout to hold the ListView and EditText
+        LinearLayout layout = new LinearLayout(SearchingDriveActivity.this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        // Create an EditText for search functionality
+        EditText searchEditText = new EditText(SearchingDriveActivity.this);
+        searchEditText.setHint("חיפוש");
+        layout.addView(searchEditText);
+
+        // Create a ListView to display the data
+        ListView listView = new ListView(SearchingDriveActivity.this);
+        listView.setAdapter(new ArrayAdapter<>(SearchingDriveActivity.this, android.R.layout.simple_list_item_1, citiesList));
+        layout.addView(listView);
+
+        builder.setView(layout);
+
+        // Set a TextWatcher on the search EditText
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Not needed
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Filter the ListView based on the user's input
+                ((ArrayAdapter<String>) listView.getAdapter()).getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Not needed
+            }
+        });
+
+        // Set an OnItemClickListener on the ListView
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Handle the item click
+                String selectedLocation = (String) listView.getItemAtPosition(position);
+                if(buttonId.equals("btn_select_from"))
+                    from.setText(selectedLocation);
+                if(buttonId.equals("btn_select_to"))
+                    to.setText(selectedLocation);
+                dialog.dismiss(); // Close the dialog after item selection
+
+                // Perform any actions you need with the selected location
+            }
+        });
+
+        // Create the AlertDialog
+        dialog = builder.create();
+
+        // Display the AlertDialog
+        dialog.show();
+    }
+
+
+
+    public void getCityList(){
+        firebaseModel.getRef().child("cities").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(citiesList.isEmpty()) {
+                    for (DataSnapshot citySnapshot : dataSnapshot.getChildren()) {
+                        String cityName = citySnapshot.child("name").getValue(String.class);
+                        citiesList.add(cityName);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle the error here if the data retrieval is unsuccessful
             }
         });
     }
