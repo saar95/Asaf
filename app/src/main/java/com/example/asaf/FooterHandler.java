@@ -1,5 +1,6 @@
 package com.example.asaf;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -19,14 +20,23 @@ public class FooterHandler implements View.OnClickListener {
         if (buttonId==R.id.btn_my_suggestions) {
             Intent chatsIntent = new Intent(context, MySuggestionsActivity.class);
             context.startActivity(chatsIntent);
+            if (context instanceof MySuggestionsActivity) {
+                ((Activity) context).finish();
+            }
         }
         if (buttonId==R.id.btn_my_rides) {
             Intent chatsIntent = new Intent(context, MyRidesActivity.class);
             context.startActivity(chatsIntent);
+            if (context instanceof MyRidesActivity) {
+                ((Activity) context).finish();
+            }
         }
         if (buttonId==R.id.btn_my_chats) {
             Intent chatsIntent = new Intent(context, MyChatsActivity.class);
             context.startActivity(chatsIntent);
+            if (context instanceof MyChatsActivity) {
+                ((Activity) context).finish();
+            }
         }
     }
 }
