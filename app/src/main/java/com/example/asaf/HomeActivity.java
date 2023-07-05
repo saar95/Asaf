@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setupWelcomeTextView() {
         welcomeTextView = findViewById(R.id.text_welcome);
-        welcomeTextView.setText("בוקר טוב ," +fireBaseModel.getFirstName());
+        welcomeTextView.setText("בוקר טוב, " +fireBaseModel.getFirstName());
     }
 
     public void addDriveOnClick(View view) {
