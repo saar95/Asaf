@@ -51,11 +51,19 @@ public class HeaderHandler {
                 }
 
                 else if (itemId == R.id.btn_ranks) {
-
+                    Intent intent = new Intent(context, RanksActivity.class);
+                    context.startActivity(intent);
+                    if (context instanceof RanksActivity) {
+                        ((Activity) context).finish();
+                    }
                 }
 
                 else if (itemId == R.id.btn_payments) {
-
+                    Intent intent = new Intent(context, PaymentsActivity.class);
+                    context.startActivity(intent);
+                    if (context instanceof PaymentsActivity) {
+                        ((Activity) context).finish();
+                    }
                 }
 
                 else if (itemId == R.id.btn_logout) {

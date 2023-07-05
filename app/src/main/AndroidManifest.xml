@@ -33,6 +33,12 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".PaymentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RanksActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
