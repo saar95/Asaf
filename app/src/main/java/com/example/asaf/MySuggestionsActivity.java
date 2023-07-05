@@ -7,13 +7,14 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-public class RanksActivity extends AppCompatActivity {
+public class MySuggestionsActivity extends AppCompatActivity {
 
     private HeaderHandler headerHandler;
     private FooterHandler footerHandler;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ranks);
+        setContentView(R.layout.activity_my_suggestions);
         setupHeader();
         setupFooter();
     }
@@ -42,4 +43,6 @@ public class RanksActivity extends AppCompatActivity {
         myRidesButton.setOnClickListener(footerHandler);
         myChatsButton.setOnClickListener(footerHandler);
     }
+
+
 }

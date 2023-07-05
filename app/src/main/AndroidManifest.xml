@@ -39,6 +39,15 @@
             android:name=".RanksActivity"
             android:exported="false" />
         <activity
+            android:name=".MySuggestionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyRidesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyChatsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

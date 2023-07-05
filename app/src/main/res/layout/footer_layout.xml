@@ -13,7 +13,7 @@
         android:background="@drawable/border_black">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_button1"
+            android:id="@+id/btn_my_suggestions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="ההצעות שלי"
@@ -32,7 +32,7 @@
         android:background="@drawable/border_black">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_button2"
+            android:id="@+id/btn_my_rides"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
@@ -50,7 +50,7 @@
         android:background="@drawable/border_black">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_button3"
+            android:id="@+id/btn_my_chats"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"

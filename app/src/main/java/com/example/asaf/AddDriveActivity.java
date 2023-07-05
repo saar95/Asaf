@@ -1,6 +1,7 @@
 package com.example.asaf;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -35,6 +36,7 @@ import java.util.Locale;
 public class AddDriveActivity extends AppCompatActivity {
     private FireBaseModel firebaseModel;
     private HeaderHandler headerHandler;
+    private FooterHandler footerHandler;
     private EditText amount;
     private Button name, date,  time, from, to;
 
@@ -60,6 +62,7 @@ public class AddDriveActivity extends AppCompatActivity {
             getCityList();
         }
         setupHeader();
+        setupFooter();
     }
 
     public void addDrive(View view){
@@ -230,5 +233,18 @@ public class AddDriveActivity extends AppCompatActivity {
                 headerHandler.openSideMenu();
             }
         });
+    }
+
+    private void setupFooter() {
+        // Find the buttons in the footer layout
+        AppCompatButton mySuggestionsButton = findViewById(R.id.btn_my_suggestions);
+        AppCompatButton myRidesButton = findViewById(R.id.btn_my_rides);
+        AppCompatButton myChatsButton = findViewById(R.id.btn_my_chats);
+
+        // Create an instance of FooterHandler and set it as the OnClickListener for the buttons
+        footerHandler = new FooterHandler(this);
+        mySuggestionsButton.setOnClickListener(footerHandler);
+        myRidesButton.setOnClickListener(footerHandler);
+        myChatsButton.setOnClickListener(footerHandler);
     }
 }
