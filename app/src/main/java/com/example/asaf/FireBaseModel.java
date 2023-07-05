@@ -150,4 +150,7 @@ public class FireBaseModel {
         return getCurrentUser().getDisplayName().split(" ")[1];
     }
 
+    public void logOut(){
+        FirebaseAuth.getInstance().signOut();
+    }
 }

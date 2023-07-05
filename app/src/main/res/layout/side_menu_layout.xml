@@ -7,10 +7,6 @@
     android:background="@android:color/white"
     android:layout_gravity="right">
 
-<!--    <include-->
-<!--        layout="@layout/nav_header_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content" />-->
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
