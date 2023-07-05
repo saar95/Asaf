@@ -4,11 +4,6 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/btn_profile_pic"
-            android:title="Profile"
-            android:icon="@drawable/ic_menu"
-            />
-        <item
             android:id="@+id/btn_home"
             android:title="עמוד הבית"
             android:icon="@drawable/ic_home"
@@ -19,14 +14,14 @@
             android:id="@+id/btn_ranks"
             android:title="דף דירוגים"
             android:icon="@drawable/ic_star"
-            android:gravity="right"
-            android:layout_gravity="right"/>
+            android:gravity="left"
+            android:layout_gravity="left"/>
         <item
             android:id="@+id/btn_payments"
             android:title="דף תשלומים"
             android:icon="@drawable/ic_credit_card"
-            android:gravity="right"
-            android:layout_gravity="right"/>
+            android:layoutDirection="rtl"
+            />
         <item
             android:id="@+id/btn_logout"
             android:title="התנתק"

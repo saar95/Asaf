@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TimePicker;
@@ -34,6 +35,9 @@ public class SearchingDriveActivity extends AppCompatActivity {
     private AlertDialog dialog;
 
     private FireBaseModel firebaseModel;
+
+    private HeaderHandler headerHandler;
+
     private Calendar calendar;
     private Button name, date, time, from, to;
 
@@ -43,6 +47,8 @@ public class SearchingDriveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_searching_drive);
 
         firebaseModel = new FireBaseModel(SearchingDriveActivity.this);
+
+        headerHandler = new HeaderHandler(this);
 
         calendar = Calendar.getInstance();
 
@@ -56,8 +62,7 @@ public class SearchingDriveActivity extends AppCompatActivity {
             getCityList();
         }
 
-
-
+        setupHeader();
     }
 
     public void showDatePickerDialog(View view) {
@@ -225,6 +230,18 @@ public class SearchingDriveActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle the error here if the data retrieval is unsuccessful
+            }
+        });
+    }
+
+    private void setupHeader() {
+        headerHandler = new HeaderHandler(this);
+
+        ImageButton menuButton = findViewById(R.id.btn_open_menu);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                headerHandler.openSideMenu();
             }
         });
     }

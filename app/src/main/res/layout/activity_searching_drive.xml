@@ -1,229 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/SearchingDriveActivity"
-    android:background="@drawable/background"
-    tools:context=".SearchingDriveActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-
-
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".HomeActivity" />
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/header_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:id="@+id/add_drive_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="חיפוש נסיעה"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/when_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
-        android:text="מתי?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_select_date"
-        app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_select_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_bg"
-        android:drawableEnd="@drawable/ic_calendar"
-        android:drawablePadding="8dp"
-        android:onClick="showDatePickerDialog"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:text="DD/MM/YYYY"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
-
-
-    <TextView
-        android:id="@+id/time_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="באיזה שעה?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/when_title"
-        app:layout_constraintTop_toBottomOf="@+id/when_title" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_select_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/btn_bg"
-        android:drawableEnd="@drawable/ic_watch"
-        android:drawablePadding="8dp"
-        android:onClick="showTimePickerDialog"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:text="00:00"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_select_date"
-        app:layout_constraintStart_toStartOf="@+id/btn_select_date"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_date" />
-
-    <TextView
-        android:id="@+id/from_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="מאיפה?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/time_title"
-        app:layout_constraintTop_toBottomOf="@+id/time_title" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_select_from"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/btn_bg"
-        android:clickable="true"
-        android:drawableEnd="@drawable/ic_location"
-        android:drawablePadding="8dp"
-        android:onClick="showCityList"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:text="בחר מיקום"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_select_time"
-        app:layout_constraintStart_toStartOf="@+id/btn_select_time"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_time" />
-
-    <TextView
-        android:id="@+id/to_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="לאן?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/from_title"
-        app:layout_constraintTop_toBottomOf="@+id/from_title" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_select_to"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/btn_bg"
-        android:clickable="true"
-        android:drawableEnd="@drawable/ic_location"
-        android:drawablePadding="8dp"
-        android:onClick="showCityList"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:text="בחר מיקום"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_select_from"
-        app:layout_constraintStart_toStartOf="@+id/btn_select_from"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_from" />
-
-    <TextView
-        android:id="@+id/tv_allDrive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="showDriveListOnClick"
-        android:text="עזוב שטויות תראה לי את כל הנסיעות"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_search"
-        app:layout_constraintVertical_bias="0.22000003" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_search"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/btn_send"
-        android:clickable="true"
-        android:onClick="showFilteredDriveList"
-        android:text="חפש נסיעה"
-        android:textColor="@color/colorWhite"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_title" />
-
-
-
-
-
-    <LinearLayout
-
-
-        android:id="@+id/linearLayout2"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="false"
-        android:gravity="bottom">
+        android:id="@+id/SearchingDriveActivity"
+        android:background="@drawable/background"
+        tools:context=".SearchingDriveActivity">
 
+
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".HomeActivity" />
 
         <include
-            layout="@layout/footer_layout"
+            android:id="@+id/include"
+            layout="@layout/header_layout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/add_drive_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="חיפוש נסיעה"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/when_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:text="מתי?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_select_date"
+            app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_select_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_bg"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:drawablePadding="8dp"
+            android:onClick="showDatePickerDialog"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="DD/MM/YYYY"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
+
+
+        <TextView
+            android:id="@+id/time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="באיזה שעה?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/when_title"
+            app:layout_constraintTop_toBottomOf="@+id/when_title" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_select_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/btn_bg"
+            android:drawableEnd="@drawable/ic_watch"
+            android:drawablePadding="8dp"
+            android:onClick="showTimePickerDialog"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="00:00"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/btn_select_date"
+            app:layout_constraintStart_toStartOf="@+id/btn_select_date"
+            app:layout_constraintTop_toBottomOf="@+id/btn_select_date" />
+
+        <TextView
+            android:id="@+id/from_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="מאיפה?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/time_title"
+            app:layout_constraintTop_toBottomOf="@+id/time_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_select_from"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/btn_bg"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_location"
+            android:drawablePadding="8dp"
+            android:onClick="showCityList"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="בחר מיקום"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/btn_select_time"
+            app:layout_constraintStart_toStartOf="@+id/btn_select_time"
+            app:layout_constraintTop_toBottomOf="@+id/btn_select_time" />
+
+        <TextView
+            android:id="@+id/to_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="לאן?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/from_title"
+            app:layout_constraintTop_toBottomOf="@+id/from_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_select_to"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/btn_bg"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_location"
+            android:drawablePadding="8dp"
+            android:onClick="showCityList"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="בחר מיקום"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/btn_select_from"
+            app:layout_constraintStart_toStartOf="@+id/btn_select_from"
+            app:layout_constraintTop_toBottomOf="@+id/btn_select_from" />
+
+        <TextView
+            android:id="@+id/tv_allDrive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="showDriveListOnClick"
+            android:text="עזוב שטויות תראה לי את כל הנסיעות"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_search"
+            app:layout_constraintVertical_bias="0.22000003" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_search"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/btn_send"
+            android:clickable="true"
+            android:onClick="showFilteredDriveList"
+            android:text="חפש נסיעה"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/to_title" />
 
 
 
 
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+
+
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:gravity="bottom">
+
+
+            <include
+                layout="@layout/footer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/side_menu_layout" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

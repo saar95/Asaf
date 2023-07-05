@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TimePicker;
@@ -33,6 +34,7 @@ import java.util.Locale;
 
 public class AddDriveActivity extends AppCompatActivity {
     private FireBaseModel firebaseModel;
+    private HeaderHandler headerHandler;
     private EditText amount;
     private Button name, date,  time, from, to;
 
@@ -46,6 +48,7 @@ public class AddDriveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drive);
         firebaseModel = new FireBaseModel(AddDriveActivity.this);
+        headerHandler = new HeaderHandler(this);
         calendar = Calendar.getInstance();
         date = (Button) findViewById(R.id.btn_select_date);
         time = (Button) findViewById(R.id.btn_select_time);
@@ -56,7 +59,7 @@ public class AddDriveActivity extends AppCompatActivity {
         if(citiesList.isEmpty()) {
             getCityList();
         }
-
+        setupHeader();
     }
 
     public void addDrive(View view){
@@ -213,6 +216,18 @@ public class AddDriveActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle the error here if the data retrieval is unsuccessful
+            }
+        });
+    }
+
+    private void setupHeader() {
+        headerHandler = new HeaderHandler(this);
+
+        ImageButton menuButton = findViewById(R.id.btn_open_menu);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                headerHandler.openSideMenu();
             }
         });
     }
