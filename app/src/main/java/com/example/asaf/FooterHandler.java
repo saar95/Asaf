@@ -18,15 +18,15 @@ public class FooterHandler implements View.OnClickListener {
         int buttonId = v.getId();
 
         if (buttonId==R.id.btn_my_suggestions) {
-            Intent chatsIntent = new Intent(context, MySuggestionsActivity.class);
-            context.startActivity(chatsIntent);
+            Intent suggestionsIntent = new Intent(context, MySuggestionsActivity.class);
+            context.startActivity(suggestionsIntent);
             if (context instanceof MySuggestionsActivity) {
                 ((Activity) context).finish();
             }
         }
         if (buttonId==R.id.btn_my_rides) {
-            Intent chatsIntent = new Intent(context, MyRidesActivity.class);
-            context.startActivity(chatsIntent);
+            Intent ridesIntent = new Intent(context, MyRidesActivity.class);
+            context.startActivity(ridesIntent);
             if (context instanceof MyRidesActivity) {
                 ((Activity) context).finish();
             }
