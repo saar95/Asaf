@@ -18,18 +18,20 @@
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="148dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".HomeActivity" />
+            tools:context=".HomeActivity" >
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/header_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <include
+                android:id="@+id/include"
+                layout="@layout/header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
 
         <TextView
