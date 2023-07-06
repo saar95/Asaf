@@ -81,8 +81,6 @@ public class FireBaseModel {
     }
 
     public void saveDrive(String name,String userId,String date, String time,String from,String to,String amount){
-
-
         DatabaseReference usersRef = myRef.child("Drive").child(userId);
         usersRef.child("name").setValue(name);
         usersRef.child("date").setValue(date);

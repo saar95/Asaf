@@ -18,13 +18,7 @@ public class DriveListActivity extends AppCompatActivity implements RecycleViewI
     private ArrayList<DriveModel> filteredMovieModels = new ArrayList<>();
     ArrayList<DriveModel> DriveList = DriveModel.getInstance().getDriveList();
 
-
     private Adapter adapter;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +33,6 @@ public class DriveListActivity extends AppCompatActivity implements RecycleViewI
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
     }
-
 
     @Override
     public void onItemClick(int position) {

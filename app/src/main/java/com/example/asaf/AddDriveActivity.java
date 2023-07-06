@@ -191,7 +191,6 @@ public class AddDriveActivity extends AppCompatActivity {
                 if(buttonId.equals("btn_select_to"))
                     to.setText(selectedLocation);
                 dialog.dismiss(); // Close the dialog after item selection
-
                 // Perform any actions you need with the selected location
             }
         });

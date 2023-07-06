@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     public void loginOnClick(View view) {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();

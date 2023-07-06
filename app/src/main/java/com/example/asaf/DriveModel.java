@@ -13,8 +13,6 @@ public class DriveModel {
     String to;
     String passengerCount;
 
-
-
     public DriveModel(String name,String date, String time, String from, String to,String passengerCount) {
         this.name = name;
         this.date = date;

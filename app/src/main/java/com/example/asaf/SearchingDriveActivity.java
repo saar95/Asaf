@@ -54,7 +54,6 @@ public class SearchingDriveActivity extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
-
         date = (Button) findViewById(R.id.btn_select_date);
         time = (Button) findViewById(R.id.btn_select_time);
         from = (Button) findViewById(R.id.btn_select_from);
@@ -215,8 +214,6 @@ public class SearchingDriveActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
-
     public void getCityList(){
         firebaseModel.getRef().child("cities").addValueEventListener(new ValueEventListener() {
             @Override
@@ -261,7 +258,6 @@ public class SearchingDriveActivity extends AppCompatActivity {
         myRidesButton.setOnClickListener(footerHandler);
         myChatsButton.setOnClickListener(footerHandler);
     }
-
 }
 
 

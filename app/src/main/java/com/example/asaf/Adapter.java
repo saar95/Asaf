@@ -34,7 +34,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull Adapter.MyViewHolder holder, int position) {
-        //
         holder.tvName.setText(DriveList.get(position).getName());
         holder.tvFrom.setText(DriveList.get(position).getFrom());
         holder.tvTo.setText(DriveList.get(position).getTo());
@@ -49,7 +48,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         //grab the views
-
         ImageView image;
         TextView tvName, tvFrom, tvTo;
         public MyViewHolder(@NonNull View itemView,RecycleViewIterface recycleViewIterface) {

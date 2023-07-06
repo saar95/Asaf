@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, cPasswordEditText, phoneEditText;
     private FireBaseModel firebaseModel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void moveLoginOnClick(View view){
         startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
     }
-
-
-
-
 
     private boolean validation(String firstName, String lastName, String email, String phone, String password, String cPassword) {
         if (firstName.isEmpty()) {

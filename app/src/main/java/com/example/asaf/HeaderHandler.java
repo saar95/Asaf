@@ -26,8 +26,6 @@ public class HeaderHandler {
         fireBaseModel = new FireBaseModel(context);
     }
 
-
-
     public void openSideMenu() {
         drawerLayout = ((Activity) context).findViewById(R.id.drawer_layout);
         NavigationView navigationView = ((Activity) context).findViewById(R.id.nav_view);
@@ -82,6 +80,4 @@ public class HeaderHandler {
             }
         });
     }
-
-
 }

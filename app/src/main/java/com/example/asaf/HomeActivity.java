@@ -18,7 +18,6 @@ public class HomeActivity extends AppCompatActivity {
     private HeaderHandler headerHandler;
     private FooterHandler footerHandler;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
