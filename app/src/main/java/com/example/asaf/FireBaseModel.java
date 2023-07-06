@@ -149,6 +149,6 @@ public class FireBaseModel {
     }
 
     public void logOut(){
-        FirebaseAuth.getInstance().signOut();
+        mAuth.signOut();
     }
 }
