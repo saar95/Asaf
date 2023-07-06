@@ -259,8 +259,3 @@ public class SearchingDriveActivity extends AppCompatActivity {
         myChatsButton.setOnClickListener(footerHandler);
     }
 }
-
-
-
-
-
