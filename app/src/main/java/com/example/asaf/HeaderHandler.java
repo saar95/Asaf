@@ -19,6 +19,8 @@ public class HeaderHandler {
     private Context context;
     private FireBaseModel fireBaseModel;
 
+    DrawerLayout drawerLayout;
+
     public HeaderHandler(Context context) {
         this.context = context;
         fireBaseModel = new FireBaseModel(context);
@@ -27,7 +29,7 @@ public class HeaderHandler {
 
 
     public void openSideMenu() {
-        DrawerLayout drawerLayout = ((Activity) context).findViewById(R.id.drawer_layout);
+        drawerLayout = ((Activity) context).findViewById(R.id.drawer_layout);
         NavigationView navigationView = ((Activity) context).findViewById(R.id.nav_view);
 
         if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
@@ -48,6 +50,7 @@ public class HeaderHandler {
                     if (context instanceof HomeActivity) {
                         ((Activity) context).finish();
                     }
+                    drawerLayout.closeDrawers();
                 }
 
                 else if (itemId == R.id.btn_ranks) {
@@ -56,6 +59,7 @@ public class HeaderHandler {
                     if (context instanceof RanksActivity) {
                         ((Activity) context).finish();
                     }
+                    drawerLayout.closeDrawers();
                 }
 
                 else if (itemId == R.id.btn_payments) {
@@ -64,6 +68,7 @@ public class HeaderHandler {
                     if (context instanceof PaymentsActivity) {
                         ((Activity) context).finish();
                     }
+                    drawerLayout.closeDrawers();
                 }
 
                 else if (itemId == R.id.btn_logout) {
