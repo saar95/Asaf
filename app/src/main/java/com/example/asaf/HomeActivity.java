@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     private TextView welcomeTextView;
@@ -30,7 +33,24 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setupWelcomeTextView() {
         welcomeTextView = findViewById(R.id.text_welcome);
-        welcomeTextView.setText("בוקר טוב, " +fireBaseModel.getFirstName());
+
+        Calendar calendar = Calendar.getInstance();
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        String greeting;
+        if (currentHour < 12 && currentHour >= 5) {
+            greeting = "בוקר טוב, ";
+        } else if (currentHour < 18 && currentHour >= 12) {
+            greeting = "צהריים טובים, ";
+        } else if (currentHour < 21 && currentHour >= 18) {
+            greeting = "ערב טוב, ";
+        } else {
+            greeting = "לילה טוב, ";
+        }
+
+        String firstName = fireBaseModel.getFirstName();
+
+        welcomeTextView.setText(greeting + firstName);
     }
 
     public void addDriveOnClick(View view) {
