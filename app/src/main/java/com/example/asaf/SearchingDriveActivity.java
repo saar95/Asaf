@@ -92,7 +92,7 @@ public class SearchingDriveActivity extends AppCompatActivity {
 
     public void showFilteredDriveList(View view) {
         DriveList.clear();
-        firebaseModel.getRef().child("Drive").addValueEventListener(new ValueEventListener() {
+        firebaseModel.getRef().child("drives").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot DriveSnapshot : dataSnapshot.getChildren()) {
@@ -126,7 +126,7 @@ public class SearchingDriveActivity extends AppCompatActivity {
     public void showDriveListOnClick(View view) {
         Log.d("@@@@@@@@@@", "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: ");
         DriveList.clear();
-        firebaseModel.getRef().child("Drive").addValueEventListener(new ValueEventListener() {
+        firebaseModel.getRef().child("drives").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot DriveSnapshot : dataSnapshot.getChildren()) {

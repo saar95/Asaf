@@ -1,5 +1,6 @@
 package com.example.asaf;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -9,6 +10,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,7 +32,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 public class AddDriveActivity extends AppCompatActivity {
@@ -65,13 +70,13 @@ public class AddDriveActivity extends AppCompatActivity {
         setupFooter();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void addDrive(View view){
-        if(!validation(date,time,from,to,amount)){
+        if(!validation(date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount)){
 
         }
         else{
-            FirebaseUser user = firebaseModel.getCurrentUser();
-            String userId = user.getUid();
+            String userId = firebaseModel.getCurrentUser().getUid();
             firebaseModel.saveDrive(firebaseModel.getFullName(),userId,date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString());
             //DriveList.add(new DriveModel(firebaseModel.getFullName(),date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString()));
             startActivity(new Intent(AddDriveActivity.this,HomeActivity.class));
@@ -127,15 +132,42 @@ public class AddDriveActivity extends AppCompatActivity {
 
         }
     }
-    public boolean validation(Button date,Button  time,Button from,Button to,EditText amount){
-        if(date.getText().toString().equals("DD/MM/YYYY")){
-            Toast.makeText(AddDriveActivity.this, "Please fill the date", Toast.LENGTH_LONG).show();return false;}
-        if(from.getText().toString().isEmpty()){
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public boolean validation(String date, String  time, String from, String to, EditText amount){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date today = new Date();
+        LocalTime currentTime = LocalTime.now();
+        LocalTime timeToCheck = LocalTime.parse(time);
+
+        if(date.equals("DD/MM/YYYY")){
+            Toast.makeText(AddDriveActivity.this, "בחר תאריך", Toast.LENGTH_LONG).show();return false;}
+        try {
+            Date dateToCheck = sdf.parse(date);
+            boolean isBeforeToday = dateToCheck.before(today);
+            boolean isToday = sdf.format(dateToCheck).equals(sdf.format(today));
+
+            if(isToday){}
+            else if (isBeforeToday) {
+                Toast.makeText(AddDriveActivity.this, "בחר תאריך עתידי", Toast.LENGTH_LONG).show();return false;}
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (timeToCheck.isBefore(currentTime)) {
+            Toast.makeText(AddDriveActivity.this, "בחר שעה עתידית", Toast.LENGTH_LONG).show();return false;}
+
+        if(from.equals(to)){
+            Toast.makeText(AddDriveActivity.this, "מיקום המוצא והיעד לא יכולים להיות שווים", Toast.LENGTH_LONG).show();return false;}
+
+        if(from.equals("בחר מיקום")){
             Toast.makeText(AddDriveActivity.this, "Please fill from where is the drive", Toast.LENGTH_LONG).show();return false;}
-        if(to.getText().toString().equals("בחר מיקום")){
+
+        if(to.equals("בחר מיקום")){
             Toast.makeText(AddDriveActivity.this, "Please fill to where is the drive", Toast.LENGTH_LONG).show();return false;}
-        if(amount.getText().toString().equals("בחר מיקום")){
-            Toast.makeText(AddDriveActivity.this, "Please fill the amount", Toast.LENGTH_LONG).show();return false;}
+
+        if(amount.getText().toString().equals("0")){
+            Toast.makeText(AddDriveActivity.this, "בחר כמות נוסעים", Toast.LENGTH_LONG).show();return false;}
+
         return true;
     }
 

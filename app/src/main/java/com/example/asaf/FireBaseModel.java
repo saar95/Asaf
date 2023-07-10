@@ -81,21 +81,21 @@ public class FireBaseModel {
     }
 
     public void saveDrive(String name,String userId,String date, String time,String from,String to,String amount){
-        DatabaseReference usersRef = myRef.child("Drive").child(userId);
+        String driveKey = myRef.child("drives").push().getKey();
+        DatabaseReference usersRef = myRef.child("drives").child(driveKey);
         usersRef.child("name").setValue(name);
         usersRef.child("date").setValue(date);
         usersRef.child("time").setValue(time);
         usersRef.child("from").setValue(from);
         usersRef.child("to").setValue(to);
+        usersRef.child("uid").setValue(userId);
         usersRef.child("amount").setValue(amount)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(Task<Void> task) {
                         if (task.isSuccessful()) {
-                            // User info saved successfully
                             showToast("Drive saved successfully");
                         } else {
-                            // Failed to save user info
                             showToast("Failed to save drive info");
                         }
                     }
