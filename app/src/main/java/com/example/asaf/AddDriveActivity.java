@@ -71,15 +71,29 @@ public class AddDriveActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void addDrive(View view){
+    public void driveDetailsOnClick(View view){
         if(!validation(date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount)){
 
         }
         else{
-            String userId = firebaseModel.getCurrentUser().getUid();
+            FirebaseUser user = firebaseModel.getCurrentUser();
+            String userId = user.getUid();
             firebaseModel.saveDrive(firebaseModel.getFullName(),userId,date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString());
+            String selectedName = firebaseModel.getFullName();
+            String selectedDate = date.getText().toString();
+            String selectedTime = time.getText().toString();
+            String selectedFrom = from.getText().toString();
+            String selectedTo = to.getText().toString();
+            String selectedAmount = amount.getText().toString();
             //DriveList.add(new DriveModel(firebaseModel.getFullName(),date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString()));
-            startActivity(new Intent(AddDriveActivity.this,HomeActivity.class));
+            Intent intent = new Intent(AddDriveActivity.this, RideDetailsActivity.class);
+            intent.putExtra("name",selectedName);
+            intent.putExtra("date", selectedDate);
+            intent.putExtra("time", selectedTime);
+            intent.putExtra("from", selectedFrom);
+            intent.putExtra("to", selectedTo);
+            intent.putExtra("amount", selectedAmount);
+            startActivity(intent);
         }
 
     }
