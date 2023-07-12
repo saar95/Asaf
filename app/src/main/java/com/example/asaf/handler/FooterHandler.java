@@ -1,9 +1,14 @@
-package com.example.asaf;
+package com.example.asaf.handler;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+
+import com.example.asaf.MyChatsActivity;
+import com.example.asaf.MyRidesActivity;
+import com.example.asaf.MySuggestionsActivity;
+import com.example.asaf.R;
 
 public class FooterHandler implements View.OnClickListener {
 
@@ -17,7 +22,7 @@ public class FooterHandler implements View.OnClickListener {
     public void onClick(View v) {
         int buttonId = v.getId();
 
-        if (buttonId==R.id.btn_my_suggestions) {
+        if (buttonId== R.id.btn_my_suggestions) {
             Intent suggestionsIntent = new Intent(context, MySuggestionsActivity.class);
             context.startActivity(suggestionsIntent);
             if (context instanceof MySuggestionsActivity) {

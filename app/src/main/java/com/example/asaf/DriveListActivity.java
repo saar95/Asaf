@@ -1,6 +1,5 @@
 package com.example.asaf;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.widget.SearchView;
 
+import com.example.asaf.recyclerview.Adapter;
+import com.example.asaf.recyclerview.RecycleViewIterface;
+
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class DriveListActivity extends AppCompatActivity implements RecycleViewIterface, SearchView.OnQueryTextListener {
     private ArrayList<DriveModel> filteredMovieModels = new ArrayList<>();

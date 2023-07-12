@@ -1,7 +1,6 @@
-package com.example.asaf.Model;
+package com.example.asaf.model;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +15,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class FireBaseModel {
+
+    private FireBaseModel fireBaseModel;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -27,6 +28,13 @@ public class FireBaseModel {
         myRef = database.getReference();
         this.context = context.getApplicationContext();
     }
+
+//    public FireBaseModel getInstance(){
+//        if(fireBaseModel == null){
+//            fireBaseModel = new FireBaseModel();
+//        }
+//        return fireBaseModel;
+//    }
 
     public void signUp(String email, String password, String displayName, OnCompleteListener<AuthResult> onCompleteListener) {
         mAuth.createUserWithEmailAndPassword(email, password)

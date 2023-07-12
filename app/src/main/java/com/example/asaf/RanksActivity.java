@@ -7,6 +7,9 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.asaf.handler.FooterHandler;
+import com.example.asaf.handler.HeaderHandler;
+
 public class RanksActivity extends AppCompatActivity {
 
     private HeaderHandler headerHandler;

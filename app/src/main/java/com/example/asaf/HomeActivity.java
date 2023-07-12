@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.asaf.Model.FireBaseModel;
+import com.example.asaf.handler.FooterHandler;
+import com.example.asaf.handler.HeaderHandler;
+import com.example.asaf.model.FireBaseModel;
 
 import java.util.Calendar;
 

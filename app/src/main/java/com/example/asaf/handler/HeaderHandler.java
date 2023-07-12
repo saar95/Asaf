@@ -1,4 +1,4 @@
-package com.example.asaf;
+package com.example.asaf.handler;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,7 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.asaf.Model.FireBaseModel;
+import com.example.asaf.HomeActivity;
+import com.example.asaf.LoginActivity;
+import com.example.asaf.PaymentsActivity;
+import com.example.asaf.R;
+import com.example.asaf.RanksActivity;
+import com.example.asaf.model.FireBaseModel;
 import com.google.android.material.navigation.NavigationView;
 
 
