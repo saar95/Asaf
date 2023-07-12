@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         welcomeTextView = findViewById(R.id.text_welcome);
 
         Calendar calendar = Calendar.getInstance();
-        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY) + 3;
 
         String greeting;
         if (currentHour < 12 && currentHour >= 5) {
