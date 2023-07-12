@@ -5,14 +5,13 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.text.SimpleDateFormat;
+
+import com.example.asaf.Model.FireBaseModel;
+
 import java.util.Calendar;
-import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     private TextView welcomeTextView;

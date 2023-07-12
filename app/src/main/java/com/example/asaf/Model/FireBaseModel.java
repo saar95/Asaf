@@ -1,4 +1,4 @@
-package com.example.asaf;
+package com.example.asaf.Model;
 
 import android.content.Context;
 import android.util.Log;

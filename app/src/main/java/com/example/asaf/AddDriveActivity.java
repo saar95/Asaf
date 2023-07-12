@@ -14,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +26,8 @@ import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.asaf.Model.FireBaseModel;
+import com.example.asaf.utils.DateTimeUtils;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +37,6 @@ import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 public class AddDriveActivity extends AppCompatActivity {
     private FireBaseModel firebaseModel;
@@ -86,7 +86,7 @@ public class AddDriveActivity extends AppCompatActivity {
             String selectedTo = to.getText().toString();
             String selectedAmount = amount.getText().toString();
             //DriveList.add(new DriveModel(firebaseModel.getFullName(),date.getText().toString(),time.getText().toString(),from.getText().toString(),to.getText().toString(),amount.getText().toString()));
-            Intent intent = new Intent(AddDriveActivity.this, RideDetailsActivity.class);
+            Intent intent = new Intent(AddDriveActivity.this, DriveListActivity.class);
             intent.putExtra("name",selectedName);
             intent.putExtra("date", selectedDate);
             intent.putExtra("time", selectedTime);

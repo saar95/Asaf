@@ -63,7 +63,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_select_date"
-            app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
+            app:layout_constraintTop_toBottomOf="@+id/search_drive_title" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -83,7 +83,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_drive_title" />
+            app:layout_constraintTop_toBottomOf="@+id/search_drive_title" />
 
 
         <TextView
